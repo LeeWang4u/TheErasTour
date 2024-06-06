@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/AdminStyles.css}" type="text/css">
+    <script type="module" src="test.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="dark-light">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+    </div>
+    <div class="tour">
+    <div class="header">
+        <div class="menu-circle"></div>
+        <div class="header-menu">
+         <a class="menu-link is-active" href="#">Tours</a>
+         <a class="menu-link" href="#">Staffs</a>
+         <a class="menu-link" href="#">Members</a>
+         <a class="menu-link" href="#">Others</a>
+        </div>
+        <div class="search-bar">
+         <input type="text" placeholder="Search">
+        </div>
+        <div class="header-profile">
+         <div class="notification">
+          <span class="notification-number">3</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+           <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
+          </svg>
+         </div>
+         <img class="profile-img" src="spacecat.png" alt="">
+        </div>
+       </div>
+    <div class="wrapper">
+        <div class="left-side">
+            <div class="side-wrapper">
+             <div class="side-title">Tours</div>
+             <div class="side-menu">
+              <a href="#">
+               All Tours
+              </a>
+              <a href="#">
+               UpComing
+               <span class="notification-number updates">3</span>
+              </a>
+             </div>
+            </div>
+            <div class="side-wrapper">
+             <div class="side-title">Categories</div>
+             <div class="side-menu">
+              <a href="#">
+               US Tours
+              </a>
+              <a href="#">
+               International Tours
+              </a>
+              <a href="#">
+               Micro Tours
+              </a>
+              <a href="#">
+                  Streaming
+              </a>
+             </div>
+            </div>
+            <div class="side-wrapper">
+             <div class="side-title">Location</div>
+             <div class="side-menu">
+              <a href="#">
+                  New York
+              </a>
+             </div>
+            </div>
+            <div class="side-wrapper">
+             <div class="side-title">Tickets</div>
+             <div class="side-menu">
+              <a href="#">
+               On Sale
+              </a>
+              <a href="#">
+               Billing
+              </a>
+              <a href="#">
+                  Refund
+              </a>
+              <a href="#">
+                  Cancel
+              </a>
+             </div>
+            </div>
+           </div>
+           <div class="main-container">
+            <div class="content-wrapper">
+             <div class="content-section">
+              <div class="content-section-title">UpComing</div>
+                <div class="button-wrapper">
+                    <button class="content-button">Update</button>
+             </div>
+            </div>
+           </div>
+    </div>   
+    <div class="overlay-tour"></div>
+    </div> 
+</body>
+</html>
