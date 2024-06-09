@@ -9,5 +9,7 @@ import java.util.List;
 @Service
 public interface MemberService {
     List<Member> getMemberByRole(String Role);
-    Member getCurrentUser();
+    String getCurrentUser();
+
+    Member findMemberByUserId(String id);
 }

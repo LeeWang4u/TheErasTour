@@ -10,8 +10,8 @@ import java.util.List;
 
 @Service
 public interface BillService {
-    Bill findBilById(String is);
-    String save(Member member, int ticket, Double price);
+    Bill findBilById(int id);
+    int save(Member member, int ticket, Double price);
 
-    void update(String billId, List<Ticket> ticketList);
+    void update(int billId, List<Ticket> ticketList);
 }

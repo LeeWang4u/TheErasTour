@@ -138,7 +138,7 @@
         <h3>Location: <span th:text="${tour.getLocationId().getName()}"></span></h3>
         <h3>Address: <span th:text="${tour.getLocationId().getAddress()}"></span></h3>
     </section>
-    <form id="ticketForm" method="get" action="/">
+    <form id="ticketForm" method="post" th:action="@{/tour/tour-details}">
     <section class="ticket-container">
         <h2>Tickets</h2>
          <div class="ticket">

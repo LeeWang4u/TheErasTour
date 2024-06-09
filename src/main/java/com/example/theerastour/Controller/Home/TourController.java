@@ -83,11 +83,12 @@ public class TourController {
         int Regular = Integer.parseInt(regular_quantity);
         int Economy = Integer.parseInt(economy_quantity);
 
-        Member member = memberService.getCurrentUser();
+        String member1 = memberService.getCurrentUser();
+        Member member = memberService.findMemberByUserId(member1);
         Tour tour = tourService.findTourById(idTour);
         int total = Vip+Regular+Economy;
         double totalPrice = Vip*150 + Regular*100 + Economy*50;
-        String billId = billService.save(member,total, totalPrice);
+        int billId = billService.save(member,total, totalPrice);
         Bill bill = billService.findBilById(billId);
         List<Ticket> ticketList = new ArrayList<>();
         Ticket ticket;
@@ -107,14 +108,13 @@ public class TourController {
             for (int i = 0; i < Economy; i++) {
                 ticket = ticketService.save("Economy",50,tour,bill);
                 ticketList.add(ticket);
+                System.out.println(ticket.getType());
             }
         }
 
         billService.update(billId, ticketList);
 
-
-
-
+        System.out.println(billId);
 
         model.addAttribute(tour);
 

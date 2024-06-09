@@ -27,8 +27,5 @@ public class TicketServiceImpl implements TicketService {
         return ticketRepository.findAll();
     }
 
-//    @Override
-//    public List<Ticket> findAllByBillID(int billId){
-//        return ticketRepository.findAllByBillId(billId);
-//    }
+
 }

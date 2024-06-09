@@ -16,19 +16,19 @@ public class BillServiceImpl implements BillService {
     @Autowired
     BillRepository billRepository;
     @Override
-    public String save(Member member, int ticket, Double price){
+    public int save(Member member, int ticket, Double price){
         Bill bill = new Bill(ticket,price,member);
         billRepository.save(bill);
-        return (String)bill.getId();
+        return (int)bill.getId();
     }
 
     @Override
-    public Bill findBilById(String id){
+    public Bill findBilById(int id){
         return billRepository.findBillById(id);
     }
 
     @Override
-    public void update(String billId, List<Ticket> ticketList){
+    public void update(int billId, List<Ticket> ticketList){
         Bill bill = billRepository.findBillById(billId);
         bill.setTickets(ticketList);
         billRepository.save(bill);

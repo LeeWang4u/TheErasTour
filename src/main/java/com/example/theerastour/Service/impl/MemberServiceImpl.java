@@ -29,17 +29,24 @@ public class MemberServiceImpl implements MemberService {
         return members;
     }
 
-    @Override
-    public Member getCurrentUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            Member member = new Member();
-            member.setUserId(userDetails.getUsername());
-          //  member.setUsername(userDetails.getUsername());
-            // Gán các thông tin khác của member từ UserDetails nếu cần
-            return member;
-        }
-        return null;
+    public Member findMemberByUserId(String id){
+        return memberRepository.findAllByUserId(id);
     }
+
+        @Override
+        public String getCurrentUser() {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+                UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+                return userDetails.getUsername();
+//                Member member = new Member();
+//                member.setUserId(userDetails.getUsername());
+//                member.setPassword(userDetails.getPassword());
+//
+//              //  member.setUsername(userDetails.getUsername());
+//                // Gán các thông tin khác của member từ UserDetails nếu cần
+//                return member;
+            }
+            return null;
+        }
 }
