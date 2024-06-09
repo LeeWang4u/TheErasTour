@@ -14,4 +14,6 @@ public interface BillService {
     int save(Member member, int ticket, Double price);
 
     void update(int billId, List<Ticket> ticketList);
+
+    List<Bill> findAllByUserId(String id);
 }

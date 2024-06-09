@@ -137,12 +137,12 @@
         <p>$550</p>
         <a>MORE INFO</a>
 
-        <div th:each="ticket : ${ticketList}" class="tour-list__main">
-            <div th:text="${ticket.getType()}"></div>
-            <p><span th:text="${ticket.getTourId().getLocationId().getAddress()}"></span></p>
-            <p><span th:text="${ticket.getPrice()}"></span></p>
+        <div th:each="bill : ${billList}" class="tour-list__main">
+            <div th:text="${bill.getId()}"></div>
+            <p><span th:text="${bill.getTickets()[0].getTourId().getName()}"></span></p>
+            <p><span th:text="${bill.getTotalPrice()}"></span></p>
             <form  th:action="@{/tour/tour-details}" method="get" >
-                <input type="hidden" name="idTour" th:value="${ticket.getId()}" />
+                <input type="hidden" name="idTour" th:value="${bill.getId()}" />
                 <button type="submit" class="content-button">MORE INFO</button>
                 <!--                        <button type="submit" th:text="${post.getTitle()}"></button>-->
 

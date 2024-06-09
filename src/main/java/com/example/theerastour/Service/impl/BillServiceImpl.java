@@ -33,4 +33,9 @@ public class BillServiceImpl implements BillService {
         bill.setTickets(ticketList);
         billRepository.save(bill);
     }
+
+    @Override
+    public List<Bill> findAllByUserId(String id){
+        return billRepository.findAllByUserId(id);
+    }
 }

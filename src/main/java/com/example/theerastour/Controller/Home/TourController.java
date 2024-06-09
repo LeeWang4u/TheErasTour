@@ -87,6 +87,7 @@ public class TourController {
         Member member = memberService.findMemberByUserId(member1);
         Tour tour = tourService.findTourById(idTour);
         int total = Vip+Regular+Economy;
+        if(total==0) return "home/index";
         double totalPrice = Vip*150 + Regular*100 + Economy*50;
         int billId = billService.save(member,total, totalPrice);
         Bill bill = billService.findBilById(billId);
@@ -113,12 +114,12 @@ public class TourController {
         }
 
         billService.update(billId, ticketList);
-
         System.out.println(billId);
 
-        model.addAttribute(tour);
+        List<Bill> billList = billService.findAllByUserId(member1);
+        model.addAttribute("billList",billList);
 
-        return "home/index";
+        return "login/acc-management";
     }
 
 
