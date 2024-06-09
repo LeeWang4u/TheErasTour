@@ -11,5 +11,7 @@ public interface TourService {
     List<Tour> findAllByUpComing();
     List<Tour> findAllByType(String type);
 
+    Tour findTourById(int id);
+
 
 }

@@ -21,6 +21,16 @@ public class Bill {
     @OneToMany(mappedBy = "billId" ,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Ticket> tickets;
 
+    public Bill() {
+        // Constructor mặc định
+    }
+    public Bill(int totalTickets, double totalPrice, Member userId) {
+        this.totalTickets = totalTickets;
+        this.totalPrice = totalPrice;
+        this.userId = userId;
+
+    }
+
     public String getId() {
         return id;
     }

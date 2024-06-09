@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/HomeStyles.css}" type="text/css">
+    <title>Document</title>
+    <style>
+        .tour-details {
+            width: 100%;
+            padding: 0 10%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1em;
+            justify-content: center;
+            align-items: center;
+        }
+        .loca-details {
+            width: 100%;
+            padding: 0 10%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1em;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .tour-details img {
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .description {
+            text-align: justify;
+            line-height: 1.5em;
+            position: relative;
+            font-style: italic;
+        }
+        .info {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+            font-weight: bold;
+            align-self: flex-end;
+        }
+
+        .quote::before,
+        .quote::after {
+            font-size: 1.2em;
+        }
+
+        .quote::before {
+            content: '"';
+        }
+
+        .quote::after {
+            content: '"';
+        }
+        .ticket-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0 10%;
+            row-gap: 1em;
+            margin: 50px 0;
+        }
+
+        .ticket {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .ticket:first-child {
+            background-color: #f0e68c; /* light yellow */
+        }
+
+        .ticket:nth-child(2) {
+            background-color: #add8e6; /* light blue */
+        }
+
+        .ticket:nth-child(3) {
+            background-color: #90ee90; /* light green */
+        }
+
+        .ticket-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .ticket-buttons button {
+            background-color: #ff5733; /* red-orange */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .ticket-buttons input {
+            width: 50px;
+            text-align: center;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+
+        .ticket-buttons button:hover {
+            background-color: #c44126; /* darker red-orange */
+        }
+    </style>
+</head>
+<body>
+    <section class="tour-details">
+        <h2 th:text = "${tour.getName()}"></h2>
+        <h2 th:text = "${tour.getType()}"></h2>
+        <span th:text="${tour.getTourDate()}" class="info"></span>
+
+<!--        <span class="info" th:text="${tour.}"></span>-->
+        <img src="/img/z5521757707274_22386de6c2b683be964f6884b1b77cb9.jpg" alt="day la anh cua location">
+        <h3 class="description quote" th:text = "${tour.getDescription()}"></h3>
+        <span class="info">Taylor Swift</span>
+    </section>
+    <section class="loca-details">
+        <h2>Location</h2>
+        <h3>Location: <span th:text="${tour.getLocationId().getName()}"></span></h3>
+        <h3>Address: <span th:text="${tour.getLocationId().getAddress()}"></span></h3>
+    </section>
+    <form id="ticketForm" method="get" action="/">
+    <section class="ticket-container">
+        <h2>Tickets</h2>
+         <div class="ticket">
+            <span>VIP Ticket</span>
+            <div class="ticket-buttons">
+                <button type="button" class="decrease">-</button>
+                <input type="text" name="vip_quantity" class="quantity" value="0" readonly>
+                <button type="button" class="increase">+</button>
+            </div>
+        </div>
+        <div class="ticket">
+            <span>Regular Ticket</span>
+            <div class="ticket-buttons">
+                <button type="button" class="decrease">-</button>
+                <input type="text" name="regular_quantity" class="quantity" value="0" readonly>
+                <button type="button" class="increase">+</button>
+            </div>
+        </div>
+        <div class="ticket">
+            <span>Economy Ticket</span>
+            <div class="ticket-buttons">
+                <button type="button" class="decrease">-</button>
+                <input type="text" name="economy_quantity" class="quantity" value="0" readonly>
+                <button type="button" class="increase">+</button>
+            </div>
+        </div>
+
+        <button type="submit" class="info primary-btn">Purchase</button>
+    </section>
+    </form>
+    <hr>
+    <footer class="footer">
+        <div class="social-media">
+            <p>f</p>
+            <p>i</p>
+            <p>t</p>
+            <p>x</p>
+            <p>y</p>
+        </div>
+        <div class="our-team">
+            <a href="#">about</a>
+            <a href="#">contact</a>
+            <a href="#">privacy policy</a>
+            <a href="#">terms of use</a>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('.ticket').forEach(ticket => {
+            const decreaseButton = ticket.querySelector('.decrease');
+            const increaseButton = ticket.querySelector('.increase');
+            const quantityInput = ticket.querySelector('.quantity');
+
+            decreaseButton.addEventListener('click', () => {
+                let quantity = parseInt(quantityInput.value, 10);
+                if (quantity > 0) {
+                    quantity -= 1;
+                    quantityInput.value = quantity;
+                }
+            });
+
+            increaseButton.addEventListener('click', () => {
+                let quantity = parseInt(quantityInput.value, 10);
+                quantity += 1;
+                quantityInput.value = quantity;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -29,12 +29,6 @@ public class Member {
     @JoinColumn(name = "user_id")
     private List<Roles> roles;
 
-//@ManyToMany(fetch = FetchType.LAZY)
-//@JoinTable(
-//        name = "member_role",
-//        joinColumns = @JoinColumn(name = "user_id"),
-//        inverseJoinColumns = @JoinColumn(name = "user_id"))
-//private List<Roles> roles;
 
 
     public Member() {

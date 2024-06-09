@@ -52,7 +52,13 @@
             <span th:text="${tour.getTourDateTime()}"></span>
             <p th:text="${tour.getLocationId().getName()}"></p>
             <p th:text="${tour.getLocationId().getAddress()}"></p>
-            <a href="#" target="_blank">MORE INFO</a>
+            <form  th:action="@{/tour/tour-details}" method="get" >
+                <input type="hidden" name="idTour" th:value="${tour.getId()}" />
+                <button type="submit" class="content-button">MORE INFO</button>
+                <!--                        <button type="submit" th:text="${post.getTitle()}"></button>-->
+
+            </form>
+<!--            <a href="#" target="_blank">MORE INFO</a>-->
         </div>
 
 

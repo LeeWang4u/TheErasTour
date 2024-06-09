@@ -7,16 +7,23 @@ import java.util.List;
 @Table(name = "roles")
 public class Roles {
     @Id
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private String userId;
     @Column(name = "role")
     private String role;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
+    private Member member;
 
 
+    public Member getMember() {
+        return member;
+    }
 
-//    @ManyToMany(mappedBy = "roles")
-//    private List<Member> members;
+    public void setMember(Member member) {
+        this.member = member;
+    }
 
     public Roles() {
     }

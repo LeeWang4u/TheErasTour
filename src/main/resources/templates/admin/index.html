@@ -126,7 +126,35 @@
                         <p><span th:text="${tour.getLocationId().getAddress()}"></span></p>
                         <div th:text="${tour.getTotalTickets()}"></div>
                         <li></li>
-                        <button class="content-button">Update</button>
+                        <button class="content-button status-button">Update</button>
+                    <form action="#" method="post">
+                        <div class="pop-up">
+                            <div class="pop-up__title">Update
+                                <svg class="close feather feather-x-circle" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M15 9l-6 6M9 9l6 6" />
+                                </svg>
+                            </div>
+                            <div class="pop-up__subtitle">Name</div>
+                            <div class="nor-input">
+                                <input type="text" placeholder="name" name="nor-input" class="nor-input">
+                            </div>
+                            <div class="pop-up__subtitle">Type</div>
+                            <select name="tour-type" id="tour-type">
+                                <option value="US">US</option>
+                                <option value="US">International</option>
+                            </select>
+                            <div class="pop-up__subtitle">Location</div>
+                            <select name="location-id" id="location-id">
+                                <option value="US">US</option>
+                                <option value="US">International</option>
+                            </select>
+                            <div class="content-button-wrapper">
+                                <button class="content-button status-button">Cancel</button>
+                                <button type="submit" class="content-button status-button">Save</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
             </div>

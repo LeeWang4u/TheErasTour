@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/HomeStyles.css}" type="text/css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+    <title>Document</title>
+    <style>
+/* SIDE BAR STYLES */
+.side-bar{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  height: 100vh;
+  width: 20%;
+  position: fixed;
+  margin-left: 30px;
+  left:0;
+  top: 50px;
+}
+.side-bar a{
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: 0.3s;
+  text-decoration: none;
+  color: black;
+}
+.side-bar a:hover{
+  color:var(--primary-color);
+}
+.active-link{
+  color: blueviolet !important;
+}
+/* MAIN STYLES */
+.main-content{
+  margin-top: 100px;
+  margin-left: 30%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap:150px;
+}
+
+/* SECTION1 STYLES */
+.personal-info, .change-password , .purchase-history{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.375);
+    box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
+    border-radius: 2rem;
+    padding: 1rem;
+}
+.personal-info h1{
+  text-align: center;
+}
+.delete-account{
+  max-width: 700px;
+  height: 100px;
+  position: relative;
+}
+.delete-account button{
+  background-color: red;
+  color: white;
+  position: absolute;
+  right: 0;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="nav-bar__left">
+                <div class="logo">
+                    <a href="#">Logo</a>
+                </div>
+            </div>
+            <div class="nav-bar__right">
+            <ul class="links">
+                <li><a href="#">Home  /</a></li>
+                <li><a href="#">Ticket  /</a></li>
+                <li><a href="#">Purchase History /</a></li>
+                <li><a href="#">Sign Out</a></li>
+            </ul>
+        </div>
+        </nav>
+    </header>
+  <div class="side-bar">
+    <h1>Account Management</h1>
+    <a href="#section1">Personal Infomation</a>
+    <a href="#section2">Purchase History</a>
+    <a href="#section3">Change Password</a>
+    <a href="#section4">Delete Account</a>
+  </div>
+  <section class="main-content">
+    <div class="personal-info" id="section1">
+      <h2>Personal Information</h2>
+        <label for="name" class="text">Name:</label>
+        <input type="text" id="name" placeholder="Trinh Huy Hoang" name="nor-input" class="styled-input">
+          <label for="phone" class="text">Phone:</label>
+          <input type="text" id="phone" placeholder="phone number" name="nor-input" class="styled-input">
+      <button type="submit" class="primary-btn">SAVE CHANGES</button>
+    </div>
+    <div class="purchase-history" id="section2">
+        <h2>Purchase History</h2>
+        <hr>
+    <div class="tour-list__main">
+        <span>188001</span>
+        <p>the eras tour</p>
+        <p>$550</p>
+        <a>MORE INFO</a>
+
+        <span>188001</span>
+        <p>the eras tour</p>
+        <p>$550</p>
+        <a>MORE INFO</a>
+
+        <span>188001</span>
+        <p>the eras tour</p>
+        <p>$550</p>
+        <a>MORE INFO</a>
+
+        <span>188001</span>
+        <p>the eras tour</p>
+        <p>$550</p>
+        <a>MORE INFO</a>
+
+        <span>188001</span>
+        <p>the eras tour</p>
+        <p>$550</p>
+        <a>MORE INFO</a>
+
+        <div th:each="ticket : ${ticketList}" class="tour-list__main">
+            <div th:text="${ticket.getType()}"></div>
+            <p><span th:text="${ticket.getTourId().getLocationId().getAddress()}"></span></p>
+            <p><span th:text="${ticket.getPrice()}"></span></p>
+            <form  th:action="@{/tour/tour-details}" method="get" >
+                <input type="hidden" name="idTour" th:value="${ticket.getId()}" />
+                <button type="submit" class="content-button">MORE INFO</button>
+                <!--                        <button type="submit" th:text="${post.getTitle()}"></button>-->
+
+            </form>
+
+        </div>
+    </div>
+</div>
+    <div class="change-password" id="section3">
+      <h2>Change Password</h2>
+      <input class="styled-input" type="password" placeholder="password">
+      <input class="styled-input" type="password" placeholder="new password">
+      <input class="styled-input" type="password" placeholder="confirm new password">
+      <button type="submit" class="primary-btn">SAVE CHANGES</button>
+    </div>
+    <div class="delete-account" id="section4">
+      <button class="primary-btn">DELETE ACCOUNT</button>
+    </div>
+  </section>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const links = document.querySelectorAll('.side-bar a');
+          const sections = document.querySelectorAll('.main-content > div');
+
+          function activateLink() {
+              let index = sections.length;
+
+              while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+              links.forEach((link) => link.classList.remove('active-link'));
+              if (index >= 0) {
+                  links[index].classList.add('active-link');
+              }
+          }
+
+          activateLink();
+          window.addEventListener('scroll', activateLink);
+
+          links.forEach(link => {
+              link.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  const targetId = this.getAttribute('href').substring(1);
+                  const targetSection = document.getElementById(targetId);
+
+                  window.scrollTo({
+                      top: targetSection.offsetTop - 50,
+                      behavior: 'smooth'
+                  });
+
+                  links.forEach(link => link.classList.remove('active-link'));
+                  this.classList.add('active-link');
+              });
+          });
+      });
+  </script>
+</body>
+</html>

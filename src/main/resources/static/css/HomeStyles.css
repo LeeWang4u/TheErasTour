@@ -100,6 +100,39 @@ a{
 .primary-btn:hover::before{
     transform: scaleX(1);
 }
+
+/* INPUT STYLES */
+/* Input Container */
+.input-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Styled Input */
+.styled-input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid var(--secondary-color);
+    padding: 10px 0;
+    font-size: 16px;
+    text-transform: uppercase;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Placeholder Styles */
+.styled-input::placeholder {
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* Input Focus */
+.styled-input:focus {
+    border-bottom: 2px solid var(--dark-color);
+}
+
 /* NAV-BAR STYLES */
 .nav-bar{
     display: flex;
@@ -172,7 +205,7 @@ a{
     height: 100%;
 }
 
-/* STORE STYLES */
+/* STORE STYLES */ 
 .store{
     width: 100%;
     max-height: 90vh;
@@ -206,7 +239,7 @@ a{
     display: grid;
     height: 90vh;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-}
+}   
 .store__main .card{
     display: flex;
     flex-direction: column;
@@ -266,14 +299,24 @@ a{
 .sign-up{
     display:flex;
     justify-content: space-between;
-    height: 50vh;
+    height: 75vh;
     align-items: center;
     flex-direction: column;
+    row-gap: var(--spacing-m);
     padding: 120px 0;
+}
+.sign-up__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+    row-gap: var(--spacing-m);
 }
 
 /* FOOTER STYLES */
 .footer{
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -339,4 +382,23 @@ a{
 .tour-list__main span{
     color: var(--secondary-color);
     font-weight: 700;
+}
+
+/* SIGN UP PAGE STYLES */
+.sign-up__page{
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    @media screen and (max-width: 510px) {
+     padding: 20px;
+    }
+}
+.sign-up__page .sign-up__form .input-container label{
+    font-size: 1rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.sign-up__page .sign-up__form .input-container input{
+    margin-bottom: var(--spacing-l);
 }

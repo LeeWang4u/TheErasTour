@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        body {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em;
+    width: 100%;
+    height: 100vh;
+    @media screen and (max-width: 480px) {
+     padding: 0.8em;
+    }
+   }
+    </style>
+</head>
+<body>
+    <div class="sign-up__page">
+    <form action="#" method="post" class="sign-up__form">
+        <div class="input-container">
+            <input type="text" placeholder="EMAIL ADDRESS (*)" class="styled-input">
+            <label for="password">PASSWORD</label>
+            <input id="password" type="password" class="styled-input">
+            <label for="firm-password">CONFIRM PASSWORD</label>
+            <input id="firm-password" type="password" class="styled-input">
+        </div>
+        <button type="submit" class="primary-btn">submit</button>
+    </form>
+    </div>
+</body>
+</html>

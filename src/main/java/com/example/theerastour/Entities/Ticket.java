@@ -7,8 +7,9 @@ public class Ticket {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "tour_id")
-    private int tourId;
+    @ManyToOne(fetch=FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name="tour_id")
+    private Tour tourId;
     @Column(name ="type")
     private String type;
     @Column(name = "price")
@@ -20,10 +21,11 @@ public class Ticket {
     private Bill billId;
     public Ticket() {
     }
-    public Ticket(int tourId, String type, double price) {
+    public Ticket(Tour tourId, String type, double price, Bill billId) {
         this.tourId = tourId;
         this.type = type;
         this.price = price;
+        this.billId = billId;
     }
 
     public String getId() {
@@ -34,11 +36,11 @@ public class Ticket {
         this.id = id;
     }
 
-    public int getTourId() {
+    public Tour getTourId() {
         return tourId;
     }
 
-    public void setTourId(int tourId) {
+    public void setTourId(Tour tourId) {
         this.tourId = tourId;
     }
 

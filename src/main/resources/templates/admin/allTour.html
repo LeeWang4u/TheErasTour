@@ -126,6 +126,12 @@
                     <p><span th:text="${tour.getLocationId().getAddress()}"></span></p>
                     <div th:text="${tour.getTotalTickets()}"></div>
                     <li></li>
+<!--                    <form  th:action="@{/tour/tour-details}" method="get" >-->
+<!--                        <input type="hidden" name="idTour" th:value="${tour.getId()}" />-->
+<!--                        <button type="submit" class="content-button">Update</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button type="submit" th:text="${post.getTitle()}"></button>&ndash;&gt;-->
+
+<!--                    </form>-->
                     <button class="content-button">Update</button>
                 </div>
 

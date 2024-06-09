@@ -36,4 +36,9 @@ public class TourServiceImpl implements TourService {
         return tours;
     }
 
+    @Override
+    public Tour findTourById(int id){
+        return tourRepository.findTourById(id);
+    }
+
 }

@@ -58,18 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
     //   }
     // });
 
-    // // Status button and pop-up events
-    // document.querySelectorAll(".status-button:not(.open)").forEach(button => {
-    //   button.addEventListener("click", () => {
-    //     document.querySelector(".overlay-app").classList.add("is-active");
-    //     document.querySelector(".pop-up").classList.add("visible");
-    //   });
-    // });
+    // Status button and pop-up events
+    document.querySelectorAll(".status-button:not(.open)").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelector(".overlay-tour").classList.add("is-active");
+        document.querySelector(".pop-up").classList.add("visible");
+      });
+    });
 
-    // document.querySelector(".pop-up .close").addEventListener("click", () => {
-    //   document.querySelector(".overlay-app").classList.remove("is-active");
-    //   document.querySelector(".pop-up").classList.remove("visible");
-    // });
+    document.querySelector(".pop-up .close").addEventListener("click", () => {
+      document.querySelector(".overlay-tour").classList.remove("is-active");
+      document.querySelector(".pop-up").classList.remove("visible");
+    });
 
     // Toggle dark-light mode
     const toggleButton = document.querySelector('.dark-light');
